@@ -9,7 +9,10 @@ import country_converter as coco
 from geopy.geocoders import GoogleV3
 from tqdm import tqdm
 
-geolocator = GoogleV3(api_key="")
+api_key = ""
+geolocator = None
+if api_key != "":
+    geolocator = GoogleV3(api_key)
 cc = coco.CountryConverter()
 
 countries = list(pycountry.countries)
@@ -72,8 +75,9 @@ def main(input_file, output_file, cache_file):
     if Path(cache_file).exists():
         with open(cache_file, "r") as f:
             for line in f:
-                key, val = line.strip().split("<==>")
-                geolocator_cache[key] = val
+                key_val = line.strip().split("<==>")
+                if len(key_val) == 2:
+                    geolocator_cache[key_val[0]] = key_val[1]
 
     for pub in tqdm(pubs):
         if not "doi" in pub or not pub["doi"]:
@@ -116,7 +120,7 @@ def main(input_file, output_file, cache_file):
                     institution_country = fix_unknown_countries(institution_name)
 
                 if not institution_country:
-                    if institution_name not in geolocator_cache:
+                    if institution_name not in geolocator_cache and geolocator:
                         location = geolocator.geocode(institution_name, language="en")
                         if location:
                             address = (
@@ -130,9 +134,10 @@ def main(input_file, output_file, cache_file):
                                 geolocator_cache[institution_name]
                             )
                     else:
-                        institution_country = fix_unknown_countries(
-                            geolocator_cache[institution_name]
-                        )
+                        if institution_name in geolocator_cache:
+                            institution_country = fix_unknown_countries(
+                                geolocator_cache[institution_name]
+                            )
 
                 data.append(
                     {

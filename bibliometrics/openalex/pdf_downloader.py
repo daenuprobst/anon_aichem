@@ -80,9 +80,9 @@ def main(search_result, target_folder):
     count = 0
     count_new = 0
     for _, row in tqdm(df.iterrows(), total=len(df)):
-        count += 1
-        if count < 4013:
-            continue
+        # count += 1
+        # if count < 4013:
+        #     continue
 
         headers = {"User-Agent": ua.random, "referer": "https://www.google.com/"}
         url = row["open_access_url"]

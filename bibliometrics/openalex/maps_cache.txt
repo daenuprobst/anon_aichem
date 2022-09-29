@@ -1455,5 +1455,4 @@ Chinese Academy of Sciences (CAS) - Beijing Synchrotron Radiation Facility<==>52
 Guangzhou Laboratory - Division of Drug and Vaccine Research<==>Guangzhou, Guangdong Province, China
 Beijing Institute of Technology - Advanced Research Institute of Multidisciplinary Science<==>China, Bei Jing Shi, Hai Dian Qu, 魏公村中关村大街5号 邮政编码: 100811
 Institute of Nano Science and Technology<==>MP6G+8JG, INST Hostel Rd, Sector 81, Sahibzada Ajit Singh Nagar, Punjab 140306, India
-Department of Pediatric Oncology, Erasmus MC/Sophia
-                    Children's Hospital<==>Doctor Molewaterplein 40, 3015 GD Rotterdam, Netherlands
+Children's Hospital<==>Doctor Molewaterplein 40, 3015 GD Rotterdam, Netherlands
